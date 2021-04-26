@@ -27,6 +27,7 @@ class App extends Component {
         }
         this.addToCart = this.addToCart.bind(this);
         this.removeFromCart = this.removeFromCart.bind(this);
+        this.applyCoupon = this.applyCoupon.bind(this);
     }
 
     addToCart(index) {
@@ -57,6 +58,21 @@ class App extends Component {
         })
     }
 
+    applyCoupon(value) {
+      const products = this.state.products;
+      const subTotal = this.state.cart.subTotal;
+      const discount = subTotal * (Number(value) / 100);
+      const cart = {
+        ...this.state.cart,
+        totalPrice: subTotal - discount,
+        discount,
+        selectedCoupon: value
+      }
+      this.setState({
+        cart,
+        products
+      })
+    }
 
     render() {
 

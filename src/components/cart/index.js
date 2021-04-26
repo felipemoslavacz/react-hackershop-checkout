@@ -44,7 +44,9 @@ export default class Cart extends Component {
                 <div className="layout-row justify-content-between align-items-center px-8 mx-12">
                     <h5>Select Coupon</h5>
                     <select data-testid="cart-coupon"
-                            className="coupon-select">
+                            className="coupon-select"
+                            onChange={event => this.props.applyCoupon(event.target.value)}
+                            value={this.props.cart.selectedCoupon}>
                         <option value="0">None</option>
                         <option value="10">OFF10</option>
                         <option value="20">OFF20</option>

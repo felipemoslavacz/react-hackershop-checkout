@@ -18,13 +18,15 @@ export default class ProductList extends Component {
                                     <p className="ma-0 mt-8 text-center">${product.price}</p>
                                 </div>
                                 <div className="card-actions justify-content-center pa-4">
-                                    <button className="x-small outlined" data-testid="btn-item-add">
-                                        Add To Cart
+                                  {product.cartQuantity ? (
+                                    <button onClick={() => this.props.removeFromCart(i)} className="x-small danger" data-testid="btn-item-remove">
+                                      Remove
                                     </button>
-
-                                    <button className="x-small danger" data-testid="btn-item-remove">
-                                        Remove
+                                  ) : (
+                                    <button onClick={() => this.props.addToCart(i)} className="x-small outlined" data-testid="btn-item-add">
+                                      Add To Cart
                                     </button>
+                                  )}
                                 </div>
                             </div>
                         </section>
